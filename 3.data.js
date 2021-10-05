@@ -1,5 +1,5 @@
-const susan = "Susan";
+export const susan = "Susan";
 const John = "John";
 const peter = "Peter";
 
-module.exports.data = { susan, John, peter };
+// module.exports.data = { susan, John, peter };

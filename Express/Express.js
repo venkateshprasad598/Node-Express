@@ -1,15 +1,13 @@
 const express = require("express");
-const path = require("path");
 const app = express();
-// Store All static fles, for example styling pages, funcnality pages which are related to sendFile.
-app.use(express.static("./public"));
 
-app.get("/about", (req, res) => {
-  res.status(200).send("My About Page");
+app.get("/", (req, res) => {
+  res.send(200).json("My Home Page");
 });
-app.get("*", (req, res) => {
-  res.status(404).send("Response not found");
+app.get("/about", (req, res) => {
+  console.log(req.query);
+  res.status(200).json("Query");
 });
 app.listen(3000, () => {
-  console.log("Server is listening at port 5000...");
+  console.log("Server is listening ar port 3000...");
 });

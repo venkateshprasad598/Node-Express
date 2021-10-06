@@ -1,13 +1,14 @@
 const express = require("express");
 const app = express();
-app.get("./", (req, res) => {
-  console.log(req.url);
-  console.log("User has hit the app");
-  res.send("Hello World");
+app.get("/", (req, res) => {
+  res.status(200).send("Welcome to my first Express program");
 });
-app.get("./1", (req, res) => {
-  console.log(req.url);
-  console.log("User has hit the app");
-  res.send("Hello World");
+app.get("/about", (req, res) => {
+  res.status(200).send("About my page");
 });
-app.listen(3000);
+app.all("*", (req, res) => {
+  res.status(404).send("Request not found");
+});
+
+app.listen(5000);
+//ok

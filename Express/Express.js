@@ -1,17 +1,15 @@
 const express = require("express");
+const { people } = require("./data/data");
 const app = express();
-const logger = require("./data/logger");
-app.use(logger);
-app.get("/", (req, res) => {
-  res.status(200).send("<h1>Home<h1/>");
+app.use(express.json());
+app.get("/api", (req, res) => {
+  console.log(people);
+  res.status(200).json({ data: people });
 });
-app.get("/about", (req, res) => {
-  res.status(200).json("Hey what is up guys");
-  console.log(req.user);
+app.post("/api/postman", (req, res) => {
+  const { name } = req.body;
+  if (name) {
+    res.json({ name: [...people, name] });
+  }
 });
-app.get("/about/info", (req, res) => {
-  res.status(200).json("Okay let me give you the information");
-});
-app.listen(5000, () => {
-  console.log("Server is listening at port 5000...");
-});
+app.listen(5000);

@@ -1,8 +1,6 @@
 const logger = (req, res, next) => {
-  const query = req.query;
-  if (query.user === "susan") {
-    req.user = { name: "Susan" };
-  }
+  console.log(req.url);
+  req.user = "Hello Boss";
   next();
 };
 module.exports = logger;
